@@ -5,9 +5,11 @@ use App\Http\Controllers\TestController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ClientController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\StringerHelperController;
+use Illuminate\Routing\Route as RoutingRoute;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,9 +51,9 @@ Route::get('/example', function() {
 
 Route::get('/products', [ProductController::class, 'index'])->name('product.index');
 
-Route::get('/posts', [ClientController::class, 'getAllPost'])->name('posts.getallpost');
+// Route::get('/posts', [ClientController::class, 'getAllPost'])->name('posts.getallpost');
 
-Route::get('/posts/{id}', [ClientController::class, 'getPostById'])->name('posts.getpostbyid');
+// Route::get('/posts/{id}', [ClientController::class, 'getPostById'])->name('posts.getpostbyid');
 
 Route::get('/add-post', [ClientController::class, 'addPost'])->name('posts.addpost');
 
@@ -63,3 +65,6 @@ Route::post('/login', [LoginController::class, 'loginSubmit'])->name('login.subm
 Route::get('/session/get', [SessionController::class, 'getSessionData'])->name('session.get');
 Route::get('/session/store', [SessionController::class, 'storeSessionData'])->name('session.store');
 Route::get('/session/delete', [SessionController::class, 'deleteSessionData'])->name('session.delete');
+
+
+Route::get('/posts', [PostController::class, 'getAllPost'])->name('post.getallpost');
