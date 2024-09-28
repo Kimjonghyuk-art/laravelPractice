@@ -2,8 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TestController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\SessionController;
 use App\Http\Controllers\StringerHelperController;
 
 /*
@@ -21,13 +24,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/users', function() {
-    return 'Hello world';
-});
-//optional
-Route::get('/users/{name?}', function($name = null) {
-    return 'Hello '.$name;
-});
+// Route::get('/users', function() {
+//     return 'Hello world';
+// });
+// //optional
+// Route::get('/users/{name?}', function($name = null) {
+//     return 'Hello '.$name;
+// });
 //파라미터 조건 
 //숫자 이외의 값의 경우 404
 // Route::get('/products/{id?}', function($id = null) {
@@ -53,3 +56,10 @@ Route::get('/posts/{id}', [ClientController::class, 'getPostById'])->name('posts
 Route::get('/add-post', [ClientController::class, 'addPost'])->name('posts.addpost');
 
 Route::get('/stringerhelper', [StringerHelperController::class, 'index'])->name('stringer.index');
+
+Route::get('/login', [LoginController::class, 'index'])->name('user.index');
+Route::post('/login', [LoginController::class, 'loginSubmit'])->name('login.submit');
+
+Route::get('/session/get', [SessionController::class, 'getSessionData'])->name('session.get');
+Route::get('/session/store', [SessionController::class, 'storeSessionData'])->name('session.store');
+Route::get('/session/delete', [SessionController::class, 'deleteSessionData'])->name('session.delete');
