@@ -6,6 +6,8 @@
   <title>Document</title>
 </head>
 <body>
+  <x-header siteName="KimSite" :products="$products"></x-header>
+
   <h1>Example Page</h1>
   <!-- 문자열 실행-->
   <p>{{ $name }}</p>

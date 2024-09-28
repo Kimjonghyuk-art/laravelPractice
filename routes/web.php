@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TestController;
+use App\Http\Controllers\ProductController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -39,3 +40,5 @@ Route::get('/testPage/{name}', function($name) {
 Route::get('/example', function() {
     return view('example', ['name' => '<script>alert("test");</script>']);
 });
+
+Route::get('/test11', [ProductController::class, 'index'])->name('product.index');
