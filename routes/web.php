@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\StringerHelperController;
 
 /*
 |--------------------------------------------------------------------------
@@ -50,3 +51,5 @@ Route::get('/posts', [ClientController::class, 'getAllPost'])->name('posts.getal
 Route::get('/posts/{id}', [ClientController::class, 'getPostById'])->name('posts.getpostbyid');
 
 Route::get('/add-post', [ClientController::class, 'addPost'])->name('posts.addpost');
+
+Route::get('/stringerhelper', [StringerHelperController::class, 'index'])->name('stringer.index');
