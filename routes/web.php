@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\TestController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -29,3 +29,13 @@ Route::get('/users/{name?}', function($name = null) {
 Route::get('/products/{id?}', function($id = null) {
     return 'productId : '. $id;
 })->where('id', '[0-9]+');
+
+Route::get('/test/{name?}', [TestController::class, 'index'])->name('home.index');
+
+Route::get('/testPage/{name}', function($name) {
+    return view('test', compact('name'));
+});
+//XSS 공격 테스트
+Route::get('/example', function() {
+    return view('example', ['name' => '<script>alert("test");</script>']);
+});
