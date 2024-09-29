@@ -19,7 +19,8 @@ class PostSeeder extends Seeder
         //     'subject' => '씨더 제목2',
         //     'content' => '본문2',
         // ]);
-
+        //https://fakerphp.github.io
+        //Formatters
         $faker = Faker::create();
         foreach(range(1,10) as $index)
         {
