@@ -77,3 +77,6 @@ Route::post('/postsubmit', [PostController::class, 'postSubmit'])->name('post.po
 Route::get('/posts/{id}', [PostController::class, 'getPostById'])->name('post.getpostbyid');
 Route::get('/updatepost/{id}', [PostController::class, 'updatePost'])->name('post.updatepost');
 Route::post('/updatepost', [PostController::class, 'updatePostSubmit'])->name('post.updatepostsubmit');
+Route::get('/deletepost/{id}', [PostController::class, 'deletePost'])->name('post.delete');
+
+Route::get('/innerjoin', [PostController::class, 'innerJoin'])->name('post.innerjoin');

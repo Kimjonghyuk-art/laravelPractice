@@ -50,5 +50,22 @@ class PostController extends Controller
         return redirect()->route('post.getallpost')->with('post_created', '글이 성공적으로 수정되었습니다.');
     }
 
+    public function deletePost($id) 
+    {
+        DB::table('posts')->where('id', $id)->delete();
+
+        return back()->with('post_deleted', '글이 성공적으로 삭제되었습니다.');
+    }
+
+    public function innerJoin()
+    {
+        $posts = DB::table('users')
+        ->select('users.name','users.email','posts.id', 'posts.subject', 'posts.content')
+        ->join('posts', 'users.id', '=', 'posts.user_id')
+        ->get();
+
+        return view('joinView',compact('posts'));
+
+    }
 
 }
