@@ -27,4 +27,28 @@ class PostController extends Controller
         ]);
         return redirect()->route('post.getallpost')->with('post_created', '글이 성공적으로 등록되었습니다.');
     }
+    
+    public function getPostById($id)
+    {
+        $post = DB::table('posts')->where('id', $id)->first();
+        return view('readPost',compact('post'));
+    }
+
+    public function updatePost($id)
+    {
+        $post = DB::table('posts')->where('id', $id)->first();
+        return view('updatePost', compact('post'));
+    }
+
+    public function updatePostSubmit(Request $request)
+    {
+        DB::table('posts')->where('id', $request->id)
+        ->update([
+            'subject' => $request -> subject,
+            'content' => $request -> content,
+        ]);
+        return redirect()->route('post.getallpost')->with('post_created', '글이 성공적으로 수정되었습니다.');
+    }
+
+
 }

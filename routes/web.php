@@ -10,6 +10,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\StringerHelperController;
 use Illuminate\Routing\Route as RoutingRoute;
+use PhpParser\Node\Expr\PostDec;
 use Symfony\Component\Routing\Annotation\Route as AnnotationRoute;
 use Symfony\Component\Routing\Attribute\Route as AttributeRoute;
 use Symfony\Component\Routing\Route as ComponentRoutingRoute;
@@ -73,3 +74,6 @@ Route::get('/session/delete', [SessionController::class, 'deleteSessionData'])->
 Route::get('/posts', [PostController::class, 'getAllPost'])->name('post.getallpost');
 Route::get('/insertpost', [PostController::class, 'insertPost'])->name('post.insertpost');
 Route::post('/postsubmit', [PostController::class, 'postSubmit'])->name('post.postsubmit');
+Route::get('/posts/{id}', [PostController::class, 'getPostById'])->name('post.getpostbyid');
+Route::get('/updatepost/{id}', [PostController::class, 'updatePost'])->name('post.updatepost');
+Route::post('/updatepost', [PostController::class, 'updatePostSubmit'])->name('post.updatepostsubmit');

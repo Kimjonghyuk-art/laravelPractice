@@ -9,28 +9,25 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </head>
 <body>
-  
-  @if(Session::has('post_created'))
-    <div class="alert alert-success" role="alert">
-      {{Session::get('post_created')}}
-    </div>
-  @endif
-
-  <div class="container w-50">
-    <form action="{{route('post.postsubmit')}}" method="POST" autocomplete="off">
+  <div class="container w-50 mt-5">
+    <form action="{{ route('post.updatepostsubmit') }}" method="POST" autocomplete="off">
       @csrf
+      <input type="hidden" name="id" value="{{$post->id}}">
       <div class="mt-4 mb-3">
-        <span class="h2">게시판</span>
+        <span class="h2">게시판 / 글수정</span>
       </div>
       <div class="mb-2">
-        <input type="text" name="subject" class="form-control" placeholder="제목을 입력해 주세요">
+        <input type="text" name="subject" value="{{$post->subject}}" class="form-control">
       </div>
+
       <div>
-        <textarea name="content" id="" cols="30" rows="10" class="form-control"></textarea>
+        <textarea name="content" id="content" class="form-control" cols="30" rows="10">{{$post->content}}</textarea>
       </div>
-        <div class="mt-2">
-          <button class="btn btn-primary">글 등록</button>
-        </div>
+      <div class="mt-2">
+        <button class="btn btn-primary">확인</button>
+        <a href="{{ route('post.getallpost') }}" class="btn btn-secondary">목록</a>
+      </div>
+
     </form>
   </div>
 </body>
