@@ -18,5 +18,10 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+        $this->call([
+            PostSeeder::class
+        ]);
+        //composer dump-autoload로 실행해서 vender/composer/autoload_classmap에서 추가된 Seeder클래스 확인
+        //php artisan db:seed로 실행
     }
 }

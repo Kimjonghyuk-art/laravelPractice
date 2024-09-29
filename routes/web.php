@@ -9,6 +9,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\StringerHelperController;
+use App\Models\Post;
 use Illuminate\Routing\Route as RoutingRoute;
 use PhpParser\Node\Expr\PostDec;
 use Symfony\Component\Routing\Annotation\Route as AnnotationRoute;
@@ -80,3 +81,5 @@ Route::post('/updatepost', [PostController::class, 'updatePostSubmit'])->name('p
 Route::get('/deletepost/{id}', [PostController::class, 'deletePost'])->name('post.delete');
 
 Route::get('/innerjoin', [PostController::class, 'innerJoin'])->name('post.innerjoin');
+
+Route::get('/getallpost', [PostController::class, 'getAllPostUsingModel'])->name('post.getallpostusingmodel');
